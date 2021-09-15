@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20D91" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Comments" representedClassName=".Comments" syncable="YES" codeGenerationType="category">
+        <attribute name="author" optional="YES" attributeType="String"/>
+        <attribute name="content" optional="YES" attributeType="String"/>
+        <attribute name="score" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="commentsToHistory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="History" inverseName="historyToComments" inverseEntity="History"/>
+        <relationship name="commentsToPosts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Posts" inverseName="postsToComments" inverseEntity="Posts"/>
+    </entity>
+    <entity name="History" representedClassName=".History" syncable="YES" codeGenerationType="category">
+        <attribute name="author" optional="YES" attributeType="String"/>
+        <attribute name="imageContent" optional="YES" attributeType="String"/>
+        <attribute name="permalink" optional="YES" attributeType="String"/>
+        <attribute name="score" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="subreddit" optional="YES" attributeType="String"/>
+        <attribute name="textContent" optional="YES" attributeType="String"/>
+        <attribute name="textPost" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="thumbnail_height" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="thumbnail_url" optional="YES" attributeType="String"/>
+        <attribute name="thumbnail_width" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="historyToComments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comments" inverseName="commentsToHistory" inverseEntity="Comments"/>
+        <relationship name="historyToPosts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Posts" inverseName="postsToHistory" inverseEntity="Posts"/>
+    </entity>
+    <entity name="Posts" representedClassName=".Posts" syncable="YES" codeGenerationType="category">
+        <attribute name="author" optional="YES" attributeType="String"/>
+        <attribute name="imageContent" optional="YES" attributeType="String"/>
+        <attribute name="permalink" optional="YES" attributeType="String"/>
+        <attribute name="score" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="subreddit" optional="YES" attributeType="String"/>
+        <attribute name="textContent" optional="YES" attributeType="String"/>
+        <attribute name="textPost" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="thumbnail_height" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="thumbnail_url" optional="YES" attributeType="String"/>
+        <attribute name="thumbnail_width" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="postsToComments" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Comments" inverseName="commentsToPosts" inverseEntity="Comments"/>
+        <relationship name="postsToHistory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="History" inverseName="historyToPosts" inverseEntity="History"/>
+    </entity>
+    <elements>
+        <element name="Comments" positionX="-54" positionY="-9" width="128" height="120"/>
+        <element name="History" positionX="-36" positionY="9" width="128" height="239"/>
+        <element name="Posts" positionX="-63" positionY="-18" width="128" height="239"/>
+    </elements>
+</model>
